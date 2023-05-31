@@ -1,5 +1,9 @@
-<h3>{{title}}</h3>
+<h3>{{ title }}</h3>
 
-<input type="text" placeholder="digite uma tarefa" [(ngModel)]="task"/>
-<button type="button" class="btn btn-light">Adicionar</button>
-<p>{{task}}</p>
+<section class="to-do">
+  <input type="text" placeholder="digite uma tarefa" [(ngModel)]="task" />
+  <button type="button" class="btn btn-light" (click)="onClickButton()">
+    Adicionar
+  </button>
+  <ul class="list-group" (mouseover)="onMouseOver()"></ul>
+</section>
