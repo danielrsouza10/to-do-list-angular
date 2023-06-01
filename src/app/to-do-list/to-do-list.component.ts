@@ -12,14 +12,21 @@ export class ToDoListComponent {
   onClickButton() {
     const container = document.querySelector('.list-group');
     const taskList = document.createElement('li');
+    const closeButton = document.createElement('button');
     taskList.innerText = this.task;
     taskList.className = 'list-group-item';
+    closeButton.innerText = 'X';
+    closeButton.className = 'btn btn-danger';
+    closeButton.value = 'X';
+    closeButton.addEventListener('click', () => {
+      container?.removeChild(taskList);
+    });
+    taskList.append(closeButton);
     container?.appendChild(taskList);
   }
+  
 
-  onMouseOver(){
-    
-  }
+  onMouseOver() {}
 
   constructor() {}
 }

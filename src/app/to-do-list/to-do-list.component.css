@@ -1,0 +1,10 @@
+.to-do {
+  height: 100vh;
+  
+}
+
+.list-group {
+    /* display: flex;
+    justify-content: space-between; */
+    width: 25vw;
+}
