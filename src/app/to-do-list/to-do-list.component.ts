@@ -6,27 +6,28 @@ import { Component } from '@angular/core';
   styleUrls: ['./to-do-list.component.css'],
 })
 export class ToDoListComponent {
-  title: string = 'To-Do-List';
+  title: string = 'To Do List';
   task: string = '';
 
   onClickButton() {
-    const container = document.querySelector('.list-group');
-    const taskList = document.createElement('li');
-    const closeButton = document.createElement('button');
-    taskList.innerText = this.task;
-    taskList.className = 'list-group-item';
-    closeButton.innerText = 'X';
-    closeButton.className = 'btn btn-danger';
-    closeButton.value = 'X';
-    closeButton.addEventListener('click', () => {
-      container?.removeChild(taskList);
-    });
-    taskList.append(closeButton);
-    container?.appendChild(taskList);
+    if (this.task === '') {
+      alert('digite uma tarefa');
+    } else {
+      const container = document.querySelector('.list-group');
+      const item = document.createElement('li');
+      const closeButton = document.createElement('button');
+      item.innerText = this.task;
+      this.task = '';
+      item.className =
+        'list-group-item d-flex justify-content-between align-items-center';
+      closeButton.className = 'btn-close';
+      closeButton.value = 'X';
+      closeButton.addEventListener('click', () => {
+        container?.removeChild(item);
+      });
+      item.appendChild(closeButton);
+      container?.appendChild(item);
+    }
   }
-  
 
-  onMouseOver() {}
-
-  constructor() {}
 }
