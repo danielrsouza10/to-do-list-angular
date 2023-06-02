@@ -1,27 +1,119 @@
-# ToDoListAngular
+# To do list
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.3.
+## Table of contents
 
-## Development server
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshots](#screenshots)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+  - [Useful resources](#useful-resources)
+- [Author](#author)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Overview
 
-## Code scaffolding
+### The challenge
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+First App with Angular
 
-## Build
+Users should be able to:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- Type a task in the input;
+- Add the task to the page by pressing the add button
+- delete the task by pressing the close button
+- use the page in different devices and screen sizes
 
-## Running unit tests
+### Screenshots
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+![](./images/Screenshot_1.png)
+![](./images/Screenshot_2.png)
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Links
 
-## Further help
+- Solution URL: [GithHub Repository](https://github.com/danielrsouza10/to-do-list-angular)
+- Deploy URL: [To do List](https://to-do-list-angular-six.vercel.app/)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## My process
+
+### Built with
+
+- Angular CLI
+- Semantic HTML5 markup
+- CSS custom properties
+- Flexbox
+- TypeScript
+
+### What I learned
+
+How to create Angular Apps.
+How to store the value of the input in variables declared in the ts component.
+Show new items in the page with TypeScript
+
+```typescript
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-to-do-list',
+  templateUrl: './to-do-list.component.html',
+  styleUrls: ['./to-do-list.component.css'],
+})
+export class ToDoListComponent {
+  title: string = 'To Do List';
+  task: string = '';
+
+  onClickButton() {
+    if (this.task === '') {
+      alert('digite uma tarefa');
+    } else {
+      const container = document.querySelector('.list-group');
+      const item = document.createElement('li');
+      const closeButton = document.createElement('button');
+      item.innerText = this.task;
+      this.task = '';
+      item.className =
+        'list-group-item d-flex justify-content-between align-items-center';
+      closeButton.className = 'btn-close';
+      closeButton.value = 'X';
+      closeButton.addEventListener('click', () => {
+        container?.removeChild(item);
+      });
+      item.appendChild(closeButton);
+      container?.appendChild(item);
+    }
+  }
+
+}
+
+````html
+<div class="to-do">
+  <h1>{{ title }}</h1>
+  <input
+    type="text"
+    placeholder=" digite uma tarefa"
+    [(ngModel)]="task"
+    (keydown.Enter)="onClickButton()"
+  />
+  
+    <button type="button" class="btn btn-secondary" (click)="onClickButton()">
+      Adicionar
+    </button>
+ 
+
+  <ul class="list-group"></ul>
+</div>
+
+````
+
+### Continued development
+
+Select bigger projects to improve the skills with the framework.
+
+
+## Author
+
+- Website - [Linkedin](https://www.linkedin.com/in/danielrsouza/)
+- Instagram - [@danielrsouza](https://www.instagram.com/danielrsouza)
